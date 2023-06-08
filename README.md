@@ -1,6 +1,15 @@
-# admins
+# Web Management Platform front-end
 
-## Project setup
+## Project Screenshots
+
+![](https://cdn.jsdelivr.net/gh/Wayne-HJ/pictures@main/img/20230603234349.png)
+![](https://cdn.jsdelivr.net/gh/Wayne-HJ/pictures@main/img/20230518211154.png)
+
+## Technologies
+
+**Frontend:** Vue + Vuex + Vue Router + Axios + Vuetify + Element + ECharts
+
+## Getting Started
 ```
 npm install
 ```
