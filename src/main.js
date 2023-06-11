@@ -24,6 +24,7 @@ import "nprogress/nprogress.css";
 import VueCalendarHeatmap from "vue-calendar-heatmap";
 import dayjs from "dayjs";
 import tagCloud from "./components/tag-cloud";
+import i18n from "./locales";
 
 Vue.prototype.config = config;
 Vue.use(mavonEditor);
@@ -94,5 +95,6 @@ axios.interceptors.response.use(
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount("#app");

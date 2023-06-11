@@ -8,7 +8,7 @@
             <i class="iconfont el-icon-myfangwenliang" style="color:#40C9C6" />
           </div>
           <div class="card-desc">
-            <div class="card-title">访问量</div>
+            <div class="card-title">{{$t('Home.cardTitle1')}}</div>
             <div class="card-count">{{ viewsCount }}</div>
           </div>
         </el-card>
@@ -19,7 +19,7 @@
             <i class="iconfont el-icon-myuser" style="color:#34BFA3" />
           </div>
           <div class="card-desc">
-            <div class="card-title">用户量</div>
+            <div class="card-title">{{$t('Home.cardTitle2')}}</div>
             <div class="card-count">{{ userCount }}</div>
           </div>
         </el-card>
@@ -30,7 +30,7 @@
             <i class="iconfont el-icon-mywenzhang-copy" style="color:#F4516C" />
           </div>
           <div class="card-desc">
-            <div class="card-title">文章量</div>
+            <div class="card-title">{{$t('Home.cardTitle3')}}</div>
             <div class="card-count">{{ articleCount }}</div>
           </div>
         </el-card>
@@ -41,7 +41,7 @@
             <i class="el-icon-s-comment" style="color:#36A3F7" />
           </div>
           <div class="card-desc">
-            <div class="card-title">留言量</div>
+            <div class="card-title">{{$t('Home.cardTitle4')}}</div>
             <div class="card-count">{{ messageCount }}</div>
           </div>
         </el-card>
@@ -49,14 +49,14 @@
     </el-row>
     <!-- 一周访问量展示 -->
     <el-card style="margin-top:1.25rem">
-      <div class="e-title">一周访问量</div>
+      <div class="e-title">{{$t('Home.el-title1')}}</div>
       <div style="height:350px">
         <v-chart :options="viewCount" v-loading="loading" />
       </div>
     </el-card>
     <!-- 文章贡献统计 -->
     <el-card style="margin-top:1.25rem">
-      <div class="e-title">文章贡献统计</div>
+      <div class="e-title">{{$t('Home.el-title2')}}</div>
       <div v-loading="loading">
         <calendar-heatmap
           :end-date="new Date()"
@@ -68,7 +68,7 @@
       <!-- 文章浏览量排行 -->
       <el-col :span="16">
         <el-card>
-          <div class="e-title">文章浏览量排行</div>
+          <div class="e-title">{{$t('Home.el-title3')}}</div>
           <div style="height:350px">
             <v-chart :options="ariticleRank" v-loading="loading" />
           </div>
@@ -77,7 +77,7 @@
       <!-- 分类数据统计 -->
       <el-col :span="8">
         <el-card>
-          <div class="e-title">文章分类统计</div>
+          <div class="e-title">{{$t('Home.el-title4')}}</div>
           <div style="height:350px">
             <v-chart :options="category" v-loading="loading" />
           </div>
@@ -88,12 +88,12 @@
       <!-- 用户地域分布 -->
       <el-col :span="16">
         <el-card>
-          <div class="e-title">用户地域分布</div>
+          <div class="e-title">{{$t('Home.el-title5')}}</div>
           <div style="height:350px" v-loading="loading">
             <div class="area-wrapper">
               <el-radio-group v-model="type">
-                <el-radio :label="1">用户</el-radio>
-                <el-radio :label="2">游客</el-radio>
+                <el-radio :label="1">{{$t('Home.el-title5-lab1')}}</el-radio>
+                <el-radio :label="2">{{$t('Home.el-title5-lab2')}}</el-radio>
               </el-radio-group>
             </div>
             <v-chart :options="userAreaMap" />
@@ -103,7 +103,7 @@
       <!-- 文章标签统计 -->
       <el-col :span="8">
         <el-card>
-          <div class="e-title">文章标签统计</div>
+          <div class="e-title">{{$t('Home.el-title6')}}</div>
           <div style="height:350px;" v-loading="loading">
             <tag-cloud style="margin-top:1.5rem" :data="tagDTOList" />
           </div>
@@ -123,6 +123,7 @@ export default {
   },
   data: function() {
     return {
+      t: this.$i18n.locale,
       loading: true,
       type: 1,
       viewsCount: 0,
@@ -140,7 +141,7 @@ export default {
         },
         color: ["#3888fa"],
         legend: {
-          data: ["访问量"]
+          data: [this.$t('Home.cardTitle1')]
         },
         grid: {
           left: "0%",
@@ -168,7 +169,7 @@ export default {
         },
         series: [
           {
-            name: "访问量",
+            name: this.$t('Home.cardTitle1'),
             type: "line",
             data: [],
             smooth: true
@@ -196,7 +197,7 @@ export default {
         yAxis: {},
         series: [
           {
-            name: ["浏览量"],
+            name: [this.$t('Home.text1')],
             type: "bar",
             data: []
           }
@@ -220,7 +221,7 @@ export default {
         },
         series: [
           {
-            name: "文章分类",
+            name: this.$t('Home.text2'),
             type: "pie",
             roseType: "radius",
             data: []
@@ -243,23 +244,23 @@ export default {
           pieces: [
             {
               gt: 100,
-              label: "100人以上",
+              label: "over 100",
               color: "#ED5351"
             },
             {
               gte: 51,
               lte: 100,
-              label: "51-100人",
+              label: "51-100",
               color: "#59D9A5"
             },
             {
               gte: 21,
               lte: 50,
-              label: "21-50人",
+              label: "21-50",
               color: "#F6C021"
             },
             {
-              label: "1-20人",
+              label: "1-20",
               gt: 0,
               lte: 20,
               color: "#6DCAEC"
@@ -294,7 +295,7 @@ export default {
         },
         series: [
           {
-            name: "用户人数",
+            name: this.$t('Home.cardTitle2'),
             type: "map",
             geoIndex: 0,
             data: [],

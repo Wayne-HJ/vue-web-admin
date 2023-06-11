@@ -6,7 +6,7 @@
       <el-input
         v-model="article.articleTitle"
         size="medium"
-        placeholder="输入文章标题"
+        :placeholder="$t('PublishArticles.inputTitle')"
       />
       <el-button
         type="danger"
@@ -15,7 +15,7 @@
         @click="saveArticleDraft"
         v-if="article.id == null || article.status == 3"
       >
-        保存草稿
+      {{$t("PublishArticles.saveDraft")}}
       </el-button>
       <el-button
         type="danger"
@@ -23,7 +23,7 @@
         @click="openModel"
         style="margin-left:10px"
       >
-        发布文章
+      {{$t("PublishArticles.postArticle")}}
       </el-button>
     </div>
     <!-- 文章内容 -->
@@ -36,12 +36,12 @@
     <!-- 添加文章对话框 -->
     <el-dialog :visible.sync="addOrEdit" width="40%" top="3vh">
       <div class="dialog-title-container" slot="title">
-        发布文章
+        {{$t("PublishArticles.postArticle")}}
       </div>
       <!-- 文章数据 -->
       <el-form label-width="80px" size="medium" :model="article">
         <!-- 文章分类 -->
-        <el-form-item label="文章分类">
+        <el-form-item :label="$t('PublishArticles.classify')">
           <el-tag
             type="success"
             v-show="article.categoryName"
@@ -58,13 +58,13 @@
             trigger="click"
             v-if="!article.categoryName"
           >
-            <div class="popover-title">分类</div>
+            <div class="popover-title">{{$t("PublishArticles.classify")}}</div>
             <!-- 搜索框 -->
             <el-autocomplete
               style="width:100%"
               v-model="categoryName"
               :fetch-suggestions="searchCategories"
-              placeholder="请输入分类名搜索，enter可添加自定义分类"
+              :placeholder="$t('PublishArticles.hint-long1')"
               :trigger-on-focus="false"
               @keyup.enter.native="saveCategory"
               @select="handleSelectCategories"
@@ -85,12 +85,12 @@
               </div>
             </div>
             <el-button type="success" plain slot="reference" size="small">
-              添加分类
+              {{$t("PublishArticles.addClassify")}}
             </el-button>
           </el-popover>
         </el-form-item>
         <!-- 文章标签 -->
-        <el-form-item label="文章标签">
+        <el-form-item :label="$t('PublishArticles.articleTag')">
           <el-tag
             v-for="(item, index) of article.tagNameList"
             :key="index"
@@ -107,13 +107,13 @@
             trigger="click"
             v-if="article.tagNameList.length < 3"
           >
-            <div class="popover-title">标签</div>
+            <div class="popover-title">{{$t("PublishArticles.tag")}}</div>
             <!-- 搜索框 -->
             <el-autocomplete
               style="width:100%"
               v-model="tagName"
               :fetch-suggestions="searchTags"
-              placeholder="请输入标签名搜索，enter可添加自定义标签"
+              :placeholder="$t('PublishArticles.hint-long2')"
               :trigger-on-focus="false"
               @keyup.enter.native="saveTag"
               @select="handleSelectTag"
@@ -124,7 +124,7 @@
             </el-autocomplete>
             <!-- 标签 -->
             <div class="popover-container">
-              <div style="margin-bottom:1rem">添加标签</div>
+              <div style="margin-bottom:1rem">{{$t("PublishArticles.addTag")}}</div>
               <el-tag
                 v-for="(item, index) of tagList"
                 :key="index"
@@ -135,12 +135,12 @@
               </el-tag>
             </div>
             <el-button type="primary" plain slot="reference" size="small">
-              添加标签
+              {{$t("PublishArticles.addTag")}}
             </el-button>
           </el-popover>
         </el-form-item>
-        <el-form-item label="文章类型">
-          <el-select v-model="article.type" placeholder="请选择类型">
+        <el-form-item :label="$t('PublishArticles.articleType')">
+          <el-select v-model="article.type" :placeholder="$t('PublishArticles.selectType')">
             <el-option
               v-for="item in typeList"
               :key="item.type"
@@ -150,13 +150,13 @@
           </el-select>
         </el-form-item>
         <!-- 文章类型 -->
-        <el-form-item label="原文地址" v-if="article.type != 1">
+        <el-form-item :label="$t('PublishArticles.originalAddress')" v-if="article.type != 1">
           <el-input
             v-model="article.originalUrl"
-            placeholder="请填写原文链接"
+            :placeholder="$t('PublishArticles.hint1')"
           />
         </el-form-item>
-        <el-form-item label="上传封面">
+        <el-form-item :label="$t('PublishArticles.uploadCover')">
           <el-upload
             class="upload-cover"
             drag
@@ -167,7 +167,7 @@
           >
             <i class="el-icon-upload" v-if="article.articleCover == ''" />
             <div class="el-upload__text" v-if="article.articleCover == ''">
-              将文件拖到此处，或<em>点击上传</em>
+              {{$t("PublishArticles.hint2")}}<em>{{$t("PublishArticles.upload")}}</em>
             </div>
             <img
               v-else
@@ -177,7 +177,7 @@
             />
           </el-upload>
         </el-form-item>
-        <el-form-item label="置顶">
+        <el-form-item :label="$t('PublishArticles.top')">
           <el-switch
             v-model="article.isTop"
             active-color="#13ce66"
@@ -186,17 +186,17 @@
             :inactive-value="0"
           />
         </el-form-item>
-        <el-form-item label="发布形式">
+        <el-form-item :label="$t('PublishArticles.releaseForm')">
           <el-radio-group v-model="article.status">
-            <el-radio :label="1">公开</el-radio>
-            <el-radio :label="2">私密</el-radio>
+            <el-radio :label="1">{{$t("PublishArticles.public")}}</el-radio>
+            <el-radio :label="2">{{$t("PublishArticles.private")}}</el-radio>
           </el-radio-group>
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button @click="addOrEdit = false">取 消</el-button>
+        <el-button @click="addOrEdit = false">{{$t("PublishArticles.cancel")}}</el-button>
         <el-button type="danger" @click="saveOrUpdateArticle">
-          发 表
+          {{$t("PublishArticles.published")}}
         </el-button>
       </div>
     </el-dialog>
@@ -236,15 +236,15 @@ export default {
       typeList: [
         {
           type: 1,
-          desc: "原创"
+          desc: this.$t("PublishArticles.original")
         },
         {
           type: 2,
-          desc: "转载"
+          desc: this.$t("PublishArticles.reprint")
         },
         {
           type: 3,
-          desc: "翻译"
+          desc: this.$t("PublishArticles.translate")
         }
       ],
       article: {
@@ -274,11 +274,11 @@ export default {
     },
     openModel() {
       if (this.article.articleTitle.trim() == "") {
-        this.$message.error("文章标题不能为空");
+        this.$message.error(this.$t("PublishArticles.hint-empty1"));
         return false;
       }
       if (this.article.articleContent.trim() == "") {
-        this.$message.error("文章内容不能为空");
+        this.$message.error(this.$t("PublishArticles.hint-empty2"));
         return false;
       }
       this.listCategories();
@@ -329,31 +329,31 @@ export default {
     },
     saveArticleDraft() {
       if (this.article.articleTitle.trim() == "") {
-        this.$message.error("文章标题不能为空");
+        this.$message.error(this.$t("PublishArticles.hint-empty1"));
         return false;
       }
       if (this.article.articleContent.trim() == "") {
-        this.$message.error("文章内容不能为空");
+        this.$message.error(this.$t("PublishArticles.hint-empty2"));
         return false;
       }
       this.article.status = 3;
       this.axios.post("/api/admin/articles", this.article).then(({ data }) => {
         if (data.flag) {
           if (this.article.id === null) {
-            this.$store.commit("removeTab", "发布文章");
+            this.$store.commit("removeTab", this.$t("PublishArticles.postArticle"));
           } else {
-            this.$store.commit("removeTab", "修改文章");
+            this.$store.commit("removeTab", this.$t("PublishArticles.editArticle"));
           }
           sessionStorage.removeItem("article");
           this.$router.push({ path: "/article-list" });
           this.$notify.success({
-            title: "成功",
-            message: "保存草稿成功"
+            title: this.$t("PublishArticles.success"),
+            message: this.$t("PublishArticles.hint-success2")
           });
         } else {
           this.$notify.error({
-            title: "失败",
-            message: "保存草稿失败"
+            title: this.$t("PublishArticles.fail"),
+            message: this.$t("PublishArticles.hint-fail1")
           });
         }
       });
@@ -363,41 +363,41 @@ export default {
     },
     saveOrUpdateArticle() {
       if (this.article.articleTitle.trim() == "") {
-        this.$message.error("文章标题不能为空");
+        this.$message.error(this.$t("PublishArticles.hint-empty1"));
         return false;
       }
       if (this.article.articleContent.trim() == "") {
-        this.$message.error("文章内容不能为空");
+        this.$message.error(this.$t("PublishArticles.hint-empty2"));
         return false;
       }
       if (this.article.categoryName == null) {
-        this.$message.error("文章分类不能为空");
+        this.$message.error(this.$t("PublishArticles.hint-empty4"));
         return false;
       }
       if (this.article.tagNameList.length == 0) {
-        this.$message.error("文章标签不能为空");
+        this.$message.error(this.$t("PublishArticles.hint-empty3"));
         return false;
       }
       if (this.article.articleCover.trim() == "") {
-        this.$message.error("文章封面不能为空");
+        this.$message.error(this.$t("PublishArticles.hint-empty5"));
         return false;
       }
       this.axios.post("/api/admin/articles", this.article).then(({ data }) => {
         if (data.flag) {
           if (this.article.id === null) {
-            this.$store.commit("removeTab", "发布文章");
+            this.$store.commit("removeTab", this.$t("PublishArticles.postArticle"));
           } else {
-            this.$store.commit("removeTab", "修改文章");
+            this.$store.commit("removeTab", this.$t("PublishArticles.editArticle"));
           }
           sessionStorage.removeItem("article");
           this.$router.push({ path: "/article-list" });
           this.$notify.success({
-            title: "成功",
+            title: this.$t("PublishArticles.success"),
             message: data.message
           });
         } else {
           this.$notify.error({
-            title: "失败",
+            title: this.$t("PublishArticles.fail"),
             message: data.message
           });
         }
@@ -419,13 +419,13 @@ export default {
           .then(({ data }) => {
             if (data.flag) {
               this.$notify.success({
-                title: "成功",
-                message: "自动保存成功"
+                title: this.$t("PublishArticles.success"),
+                message: this.$t("PublishArticles.hint-success1")
               });
             } else {
               this.$notify.error({
-                title: "失败",
-                message: "自动保存失败"
+                title: this.$t("PublishArticles.fail"),
+                message: this.$t("PublishArticles.hint-fail2")
               });
             }
           });

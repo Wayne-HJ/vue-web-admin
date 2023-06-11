@@ -3,19 +3,19 @@
     <div class="title">{{ this.$route.name }}</div>
     <!-- 文章状态 -->
     <div class="article-status-menu">
-      <span>状态</span>
-      <span @click="changeStatus('all')" :class="isActive('all')">全部</span>
+      <span>{{$t("ArticleList.state")}}</span>
+      <span @click="changeStatus('all')" :class="isActive('all')">{{$t("ArticleList.all")}}</span>
       <span @click="changeStatus('public')" :class="isActive('public')">
-        公开
+        {{$t("PublishArticles.public")}}
       </span>
       <span @click="changeStatus('secret')" :class="isActive('secret')">
-        私密
+        {{$t("PublishArticles.private")}}
       </span>
       <span @click="changeStatus('draft')" :class="isActive('draft')">
-        草稿箱
+        {{$t("ArticleList.draftBox")}}
       </span>
       <span @click="changeStatus('delete')" :class="isActive('delete')">
-        回收站
+        {{$t("ArticleList.bin")}}
       </span>
     </div>
     <!-- 表格操作 -->
@@ -28,7 +28,7 @@
         :disabled="articleIdList.length == 0"
         @click="updateIsDelete = true"
       >
-        批量删除
+      {{$t("ArticleList.delete")}}
       </el-button>
       <el-button
         v-else
@@ -38,7 +38,7 @@
         :disabled="articleIdList.length == 0"
         @click="remove = true"
       >
-        批量删除
+      {{$t("ArticleList.delete")}}
       </el-button>
       <el-button
         type="success"
@@ -48,7 +48,7 @@
         style="margin-right:1rem"
         @click="isExport = true"
       >
-        批量导出
+      {{$t("ArticleList.batchExport")}}
       </el-button>
       <el-dropdown>
         <el-button
@@ -57,7 +57,7 @@
           icon="el-icon-upload"
           style="margin-right:1rem"
         >
-          批量导入
+        {{$t("ArticleList.BatchImport")}}
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>
@@ -68,7 +68,7 @@
               :show-file-list="false"
               :on-success="uploadArticle"
             >
-              普通文章
+            {{$t("ArticleList.generalArticle")}}
             </el-upload>
           </el-dropdown-item>
           <el-dropdown-item
@@ -79,7 +79,7 @@
               :show-file-list="false"
               :on-success="uploadArticle"
             >
-              Hexo文章
+            {{$t("ArticleList.hexo")}}
             </el-upload></el-dropdown-item
           >
         </el-dropdown-menu>
@@ -90,7 +90,7 @@
         <el-select
           clearable
           v-model="type"
-          placeholder="请选择文章类型"
+          :placeholder="$t('ArticleList.hintSelect')"
           size="small"
           style="margin-right:1rem;width: 150px;"
         >
@@ -107,7 +107,7 @@
           size="small"
           v-model="categoryId"
           filterable
-          placeholder="请选择分类"
+          :placeholder="$t('ArticleList.hintSelect1')"
           style="margin-right:1rem;width: 150px;"
         >
           <el-option
@@ -123,7 +123,7 @@
           size="small"
           v-model="tagId"
           filterable
-          placeholder="请选择标签"
+          :placeholder="$t('ArticleList.hintInput')"
           style="margin-right:1rem;width: 150px;"
         >
           <el-option
@@ -139,7 +139,7 @@
           v-model="keywords"
           prefix-icon="el-icon-search"
           size="small"
-          placeholder="请输入文章名"
+          :placeholder="$t('ArticleList.hintInput1')"
           style="width:200px"
           @keyup.enter.native="searchArticles"
         />
@@ -150,7 +150,7 @@
           style="margin-left:1rem"
           @click="searchArticles"
         >
-          搜索
+        {{$t("ArticleList.search")}}
         </el-button>
       </div>
     </div>
@@ -163,11 +163,11 @@
     >
       <!-- 表格列 -->
       <el-table-column type="selection" width="55" />
-      <!-- 文章修改时间 -->
+      <!-- 文章封面-->
       <el-table-column
         prop="articleCover"
-        label="文章封面"
-        width="180"
+        :label="$t('ArticleList.cover')"
+        width="150"
         align="center"
       >
         <template slot-scope="scope">
@@ -194,19 +194,18 @@
         </template>
       </el-table-column>
       <!-- 文章标题 -->
-      <el-table-column prop="articleTitle" label="标题" align="center" />
+      <el-table-column prop="articleTitle" :label="$t('ArticleList.title')" align="center" width="150"/>
       <!-- 文章分类 -->
       <el-table-column
         prop="categoryName"
-        label="分类"
-        width="110"
+        :label="$t('PublishArticles.classify')"
+        width="90"
         align="center"
       />
       <!-- 文章标签 -->
       <el-table-column
         prop="tagDTOList"
-        label="标签"
-        width="170"
+        :label="$t('PublishArticles.tag')"
         align="center"
       >
         <template slot-scope="scope">
@@ -222,7 +221,7 @@
       <!-- 文章浏览量 -->
       <el-table-column
         prop="viewsCount"
-        label="浏览量"
+        :label="$t('Home.text1')"
         width="70"
         align="center"
       >
@@ -236,7 +235,7 @@
       <!-- 文章点赞量 -->
       <el-table-column
         prop="likeCount"
-        label="点赞量"
+        :label="$t('ArticleList.likes')"
         width="70"
         align="center"
       >
@@ -248,7 +247,7 @@
         </template>
       </el-table-column>
       <!-- 文章类型 -->
-      <el-table-column prop="type" label="类型" width="80" align="center">
+      <el-table-column prop="type" :label="$t('PublishArticles.articleType')" width="80" align="center">
         <template slot-scope="scope">
           <el-tag :type="articleType(scope.row.type).tagType">
             {{ articleType(scope.row.type).name }}
@@ -258,7 +257,7 @@
       <!-- 文章发表时间 -->
       <el-table-column
         prop="createTime"
-        label="发表时间"
+        :label="$t('ArticleList.issuingTime')"
         width="130"
         align="center"
       >
@@ -268,7 +267,7 @@
         </template>
       </el-table-column>
       <!-- 文章置顶 -->
-      <el-table-column prop="isTop" label="置顶" width="80" align="center">
+      <el-table-column prop="isTop" :label="$t('PublishArticles.top')"  align="center">
         <template slot-scope="scope">
           <el-switch
             v-model="scope.row.isTop"
@@ -282,7 +281,7 @@
         </template>
       </el-table-column>
       <!-- 列操作 -->
-      <el-table-column label="操作" align="center" width="150">
+      <el-table-column :label="$t('ArticleList.operate')" align="center" width="180">
         <template slot-scope="scope">
           <el-button
             type="primary"
@@ -290,35 +289,35 @@
             @click="editArticle(scope.row.id)"
             v-if="scope.row.isDelete == 0"
           >
-            编辑
+          {{$t("ArticleList.edit")}}
           </el-button>
           <el-popconfirm
-            title="确定删除吗？"
+            :title="$t('ArticleList.hintdelete2')"
             style="margin-left:10px"
             @confirm="updateArticleDelete(scope.row.id)"
             v-if="scope.row.isDelete == 0"
           >
             <el-button size="mini" type="danger" slot="reference">
-              删除
+              {{$t("ArticleList.delete")}}
             </el-button>
           </el-popconfirm>
           <el-popconfirm
-            title="确定恢复吗？"
+            :title="$t('ArticleList.hintrecover')"
             v-if="scope.row.isDelete == 1"
             @confirm="updateArticleDelete(scope.row.id)"
           >
             <el-button size="mini" type="success" slot="reference">
-              恢复
+              {{$t("ArticleList.recover")}}
             </el-button>
           </el-popconfirm>
           <el-popconfirm
             style="margin-left:10px"
             v-if="scope.row.isDelete == 1"
-            title="确定彻底删除吗？"
+            :title="$t('ArticleList.hintdelete3')"
             @confirm="deleteArticles(scope.row.id)"
           >
             <el-button size="mini" type="danger" slot="reference">
-              删除
+              {{$t("ArticleList.delete")}}
             </el-button>
           </el-popconfirm>
         </template>
@@ -339,39 +338,39 @@
     <!-- 批量逻辑删除对话框 -->
     <el-dialog :visible.sync="updateIsDelete" width="30%">
       <div class="dialog-title-container" slot="title">
-        <i class="el-icon-warning" style="color:#ff9900" />提示
+        <i class="el-icon-warning" style="color:#ff9900" />{{$t("ArticleList.hint")}}
       </div>
-      <div style="font-size:1rem">是否删除选中项？</div>
+      <div style="font-size:1rem">{{$t("ArticleList.hintdelete")}}</div>
       <div slot="footer">
-        <el-button @click="updateIsDelete = false">取 消</el-button>
+        <el-button @click="updateIsDelete = false">{{$t("PublishArticles.cancel")}}</el-button>
         <el-button type="primary" @click="updateArticleDelete(null)">
-          确 定
+          {{$t("ArticleList.confirm")}}
         </el-button>
       </div>
     </el-dialog>
     <!-- 批量彻底删除对话框 -->
     <el-dialog :visible.sync="remove" width="30%">
       <div class="dialog-title-container" slot="title">
-        <i class="el-icon-warning" style="color:#ff9900" />提示
+        <i class="el-icon-warning" style="color:#ff9900" />{{$t("ArticleList.hint")}}
       </div>
-      <div style="font-size:1rem">是否彻底删除选中项？</div>
+      <div style="font-size:1rem">{{$t("ArticleList.hintdelete1")}}</div>
       <div slot="footer">
-        <el-button @click="remove = false">取 消</el-button>
+        <el-button @click="remove = false">{{$t("PublishArticles.cancel")}}</el-button>
         <el-button type="primary" @click="deleteArticles(null)">
-          确 定
+          {{$t("ArticleList.confirm")}}
         </el-button>
       </div>
     </el-dialog>
     <!-- 批量导出对话框 -->
     <el-dialog :visible.sync="isExport" width="30%">
       <div class="dialog-title-container" slot="title">
-        <i class="el-icon-warning" style="color:#ff9900" />提示
+        <i class="el-icon-warning" style="color:#ff9900" />{{$t("ArticleList.hint")}}
       </div>
-      <div style="font-size:1rem">是否导出选中文章？</div>
+      <div style="font-size:1rem">{{$t("ArticleList.hintExport")}}</div>
       <div slot="footer">
-        <el-button @click="isExport = false">取 消</el-button>
+        <el-button @click="isExport = false">{{$t("PublishArticles.cancel")}}</el-button>
         <el-button type="primary" @click="exportArticles(null)">
-          确 定
+          {{$t("ArticleList.confirm")}}
         </el-button>
       </div>
     </el-dialog>
@@ -393,15 +392,15 @@ export default {
       typeList: [
         {
           value: 1,
-          label: "原创"
+          label: this.$t("PublishArticles.original")
         },
         {
           value: 2,
-          label: "转载"
+          label: this.$t("PublishArticles.reprint")
         },
         {
           value: 3,
-          label: "翻译"
+          label: this.$t("PublishArticles.translate")
         }
       ],
       activeStatus: "all",
@@ -446,13 +445,13 @@ export default {
       this.axios.put("/api/admin/articles", param).then(({ data }) => {
         if (data.flag) {
           this.$notify.success({
-            title: "成功",
+            title: this.$t("PublishArticles.success"),
             message: data.message
           });
           this.listArticles();
         } else {
           this.$notify.error({
-            title: "失败",
+            title: this.$t("PublishArticles.fail"),
             message: data.message
           });
         }
@@ -469,13 +468,13 @@ export default {
       this.axios.delete("/api/admin/articles", param).then(({ data }) => {
         if (data.flag) {
           this.$notify.success({
-            title: "成功",
+            title: this.$t("PublishArticles.success"),
             message: data.message
           });
           this.listArticles();
         } else {
           this.$notify.error({
-            title: "失败",
+            title: this.$t("PublishArticles.fail"),
             message: data.message
           });
         }
@@ -493,7 +492,7 @@ export default {
       this.axios.post("/api/admin/articles/export", param).then(({ data }) => {
         if (data.flag) {
           this.$notify.success({
-            title: "成功",
+            title: this.$t("PublishArticles.success"),
             message: data.message
           });
           data.data.forEach(item => {
@@ -502,7 +501,7 @@ export default {
           this.listArticles();
         } else {
           this.$notify.error({
-            title: "失败",
+            title: this.$t("PublishArticles.fail"),
             message: data.message
           });
         }
@@ -522,13 +521,13 @@ export default {
     uploadArticle(data) {
       if (data.flag) {
         this.$notify.success({
-          title: "成功",
-          message: "导入成功"
+          title: this.$t("PublishArticles.success"),
+          message: this.$t("ArticleList.importSuccess")
         });
         this.listArticles();
       } else {
         this.$notify.error({
-          title: "失败",
+          title: this.$t("PublishArticles.fail"),
           message: data.message
         });
       }
@@ -576,12 +575,12 @@ export default {
         .then(({ data }) => {
           if (data.flag) {
             this.$notify.success({
-              title: "成功",
-              message: "置顶成功"
+              title: this.$t("PublishArticles.success"),
+              message: this.$t("ArticleList.topSuccess")
             });
           } else {
             this.$notify.error({
-              title: "失败",
+              title: this.$t("PublishArticles.fail"),
               message: data.message
             });
           }
@@ -649,15 +648,15 @@ export default {
         switch (type) {
           case 1:
             tagType = "danger";
-            name = "原创";
+            name = this.$t("PublishArticles.original");
             break;
           case 2:
             tagType = "success";
-            name = "转载";
+            name = this.$t("PublishArticles.reprint");
             break;
           case 3:
             tagType = "primary";
-            name = "翻译";
+            name = this.$t("PublishArticles.translate");
             break;
         }
         return {
