@@ -3,7 +3,7 @@
 ## Project Screenshots
 
 ![](https://cdn.jsdelivr.net/gh/Wayne-HJ/pictures@main/img/20230603234349.png)
-![](https://cdn.jsdelivr.net/gh/Wayne-HJ/pictures@main/img/20230518211154.png)
+![](https://cdn.jsdelivr.net/gh/Wayne-HJ/pictures@main/img/202306111700664.png)
 
 ## Technologies
 
