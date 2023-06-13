@@ -35,7 +35,7 @@
           style="margin-left:1rem"
           @click="searchUsers"
         >
-          搜索
+        {{$t("Public.search")}}
         </el-button>
       </div>
     </div>
@@ -135,7 +135,7 @@
             size="mini"
             @click="openEditModel(scope.row)"
           >
-            编辑
+          {{$t("Public.edit")}}
           </el-button>
         </template>
       </el-table-column>
@@ -174,9 +174,9 @@
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button @click="isEdit = false">取 消</el-button>
+        <el-button @click="isEdit = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="editUserRole">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>

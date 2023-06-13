@@ -9,7 +9,7 @@
         icon="el-icon-plus"
         @click="openModel(null)"
       >
-        新增
+      {{$t("Public.add")}}
       </el-button>
       <el-button
         type="danger"
@@ -18,7 +18,7 @@
         :disabled="tagIdList.length == 0"
         @click="isDelete = true"
       >
-        批量删除
+      {{$t("Public.delete")}}
       </el-button>
       <div style="margin-left:auto">
         <el-input
@@ -36,7 +36,7 @@
           style="margin-left:1rem"
           @click="searchTags"
         >
-          搜索
+        {{$t("Public.search")}}
         </el-button>
       </div>
     </div>
@@ -70,7 +70,7 @@
       <el-table-column label="操作" align="center" width="160">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="openModel(scope.row)">
-            编辑
+            {{$t("Public.edit")}}
           </el-button>
           <el-popconfirm
             title="确定删除吗？"
@@ -78,7 +78,7 @@
             @confirm="deleteTag(scope.row.id)"
           >
             <el-button size="mini" type="danger" slot="reference">
-              删除
+              {{$t("Public.delete")}}
             </el-button>
           </el-popconfirm>
         </template>
@@ -103,9 +103,9 @@
       </div>
       <div style="font-size:1rem">是否删除选中项？</div>
       <div slot="footer">
-        <el-button @click="isDelete = false">取 消</el-button>
+        <el-button @click="isDelete = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deleteTag(null)">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>
@@ -118,9 +118,9 @@
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button @click="addOrEdit = false">取 消</el-button>
+        <el-button @click="addOrEdit = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="addOrEditTag">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>

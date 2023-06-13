@@ -20,7 +20,7 @@
           style="margin-left:1rem"
           @click="listOnlineUsers"
         >
-          搜索
+        {{$t("Public.search")}}
         </el-button>
       </div>
     </div>

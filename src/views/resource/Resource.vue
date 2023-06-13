@@ -9,7 +9,7 @@
         icon="el-icon-plus"
         @click="openModel(null)"
       >
-        新增模块
+      {{$t("Public.add")}}
       </el-button>
       <!-- 数据筛选 -->
       <div style="margin-left:auto">
@@ -28,7 +28,7 @@
           style="margin-left:1rem"
           @click="listResources"
         >
-          搜索
+        {{$t("Public.search")}}
         </el-button>
       </div>
     </div>
@@ -75,14 +75,14 @@
             @click="openAddResourceModel(scope.row)"
             v-if="scope.row.children"
           >
-            <i class="el-icon-plus" /> 新增
+            <i class="el-icon-plus" /> {{$t("Public.add")}}
           </el-button>
           <el-button
             type="text"
             size="mini"
             @click="openEditResourceModel(scope.row)"
           >
-            <i class="el-icon-edit" /> 修改
+            <i class="el-icon-edit" /> {{$t("Public.edit")}}
           </el-button>
           <el-popconfirm
             title="确定删除吗？"
@@ -90,7 +90,7 @@
             @confirm="deleteResource(scope.row.id)"
           >
             <el-button size="mini" type="text" slot="reference">
-              <i class="el-icon-delete" /> 删除
+              <i class="el-icon-delete" /> {{$t("Public.delete")}}
             </el-button>
           </el-popconfirm>
         </template>
@@ -105,9 +105,9 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="addModule = false">取 消</el-button>
+        <el-button @click="addModule = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="addOrEditResource">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </span>
     </el-dialog>
@@ -131,9 +131,9 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="addResource = false">取 消</el-button>
+        <el-button @click="addResource = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="addOrEditResource">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </span>
     </el-dialog>

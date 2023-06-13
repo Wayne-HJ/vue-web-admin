@@ -1,4 +1,22 @@
 export default {
+    Public:{
+        "add":"Add",
+        "edit":"Edit",
+        "delete":"Delete",
+        "cancel":"Cancel",
+        "confirm":"Confirm",
+        "search":"Search",
+        "pass":"Pass",
+        "check":"Check",
+        "open":"Open",
+        "close":"Close",
+        "closeAll":"CloseAll",
+        "state":"State",
+        "public":"Public",
+        "private":"Private",
+        "top":"Top",
+        "publish":"Publish",
+      },
     Home: {
         "translate":"Chinese",
         "user":"User",

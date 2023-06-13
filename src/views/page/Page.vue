@@ -24,10 +24,10 @@
               <i class="el-icon-more" style="color:#fff" />
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item :command="'update' + JSON.stringify(item)">
-                  <i class="el-icon-edit" />编辑
+                  <i class="el-icon-edit" />{{$t("Public.edit")}}
                 </el-dropdown-item>
                 <el-dropdown-item :command="'delete' + item.id">
-                  <i class="el-icon-delete" />删除
+                  <i class="el-icon-delete" />{{$t("Public.delete")}}
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -71,9 +71,9 @@
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button @click="addOrEdit = false">取 消</el-button>
+        <el-button @click="addOrEdit = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="addOrEditPage">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>
@@ -84,9 +84,9 @@
       </div>
       <div style="font-size:1rem">是否删除该页面？</div>
       <div slot="footer">
-        <el-button @click="isdeletePage = false">取 消</el-button>
+        <el-button @click="isdeletePage = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deletePage">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>

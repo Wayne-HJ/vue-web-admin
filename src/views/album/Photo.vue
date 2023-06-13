@@ -52,7 +52,7 @@
           size="small"
           icon="el-icon-deleteItem"
         >
-          批量删除
+        {{$t("Public.delete")}}
         </el-button>
       </div>
     </div>
@@ -73,7 +73,7 @@
                   <i class="el-icon-more" style="color:#fff" />
                   <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item :command="JSON.stringify(item)">
-                      <i class="el-icon-edit" />编辑
+                      <i class="el-icon-edit" />{{$t("Public.edit")}}
                     </el-dropdown-item>
                   </el-dropdown-menu>
                 </el-dropdown>
@@ -144,7 +144,7 @@
         <div class="upload-footer">
           <div class="upload-count">共上传{{ uploadList.length }}张照片</div>
           <div style="margin-left:auto">
-            <el-button @click="uploadPhoto = false">取 消</el-button>
+            <el-button @click="uploadPhoto = false">{{$t("Public.cancel")}}</el-button>
             <el-button
               @click="savePhotos"
               type="primary"
@@ -159,7 +159,7 @@
     <!-- 编辑对话框 -->
     <el-dialog :visible.sync="editPhoto" width="30%">
       <div class="dialog-title-container" slot="title">
-        修改信息
+        {{$t("Public.edit")}}
       </div>
       <el-form label-width="80px" size="medium" :model="photoForm">
         <el-form-item label="照片名称">
@@ -170,9 +170,9 @@
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button @click="editPhoto = false">取 消</el-button>
+        <el-button @click="editPhoto = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="updatePhoto">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>
@@ -183,9 +183,9 @@
       </div>
       <div style="font-size:1rem">是否删除选中照片？</div>
       <div slot="footer">
-        <el-button @click="batchDeletePhoto = false">取 消</el-button>
+        <el-button @click="batchDeletePhoto = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="updatePhotoDelete(null)">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>
@@ -219,13 +219,13 @@
         </el-radio-group>
       </el-form>
       <div slot="footer">
-        <el-button @click="movePhoto = false">取 消</el-button>
+        <el-button @click="movePhoto = false">{{$t("Public.cancel")}}</el-button>
         <el-button
           :disabled="albumId == null"
           type="primary"
           @click="updatePhotoAlbum"
         >
-          确 定
+        {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>

@@ -30,7 +30,7 @@
         size="small"
         icon="el-icon-deleteItem"
       >
-        批量删除
+      {{$t("Public.delete")}}
       </el-button>
     </div>
     <!-- 照片列表 -->
@@ -74,9 +74,9 @@
       </div>
       <div style="font-size:1rem">是否删除选中照片？</div>
       <div slot="footer">
-        <el-button @click="batchDeletePhoto = false">取 消</el-button>
+        <el-button @click="batchDeletePhoto = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deletePhotos">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>

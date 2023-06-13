@@ -1,4 +1,22 @@
 export default {
+    Public:{
+      "add":"添加",
+      "edit":"编辑",
+      "delete":"删除",
+      "cancel":"取消",
+      "confirm":"确认",
+      "search":"搜索",
+      "pass":"通过",
+      "check":"查看",
+      "open":"开启",
+      "close":"关闭",
+      "closeAll":"全部关闭",
+      "state":"状态",
+      "public":"公开",
+      "private":"私密",
+      "top":"置顶",
+      "publish":"发布",
+    },
     Home: {
       "translate":"英语",
       "user":"用户",

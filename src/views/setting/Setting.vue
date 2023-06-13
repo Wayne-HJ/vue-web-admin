@@ -33,7 +33,7 @@
               size="medium"
               style="margin-left:4.375rem"
             >
-              修改
+            {{$t("Public.edit")}}
             </el-button>
           </el-form>
         </div>
@@ -71,7 +71,7 @@
             style="margin-left:4.4rem"
             @click="updatePassword"
           >
-            修改
+          {{$t("Public.edit")}}
           </el-button>
         </el-form>
       </el-tab-pane>

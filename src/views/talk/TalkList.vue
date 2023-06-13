@@ -3,13 +3,13 @@
     <div class="title">{{ this.$route.name }}</div>
     <!-- 文章状态 -->
     <div class="status-menu">
-      <span>状态</span>
+      <span>{{$t("Public.state")}}</span>
       <span @click="changeStatus(null)" :class="isActive(null)">全部</span>
       <span @click="changeStatus(1)" :class="isActive(1)">
-        公开
+        {{$t("Public.public")}}
       </span>
       <span @click="changeStatus(2)" :class="isActive(2)">
-        私密
+        {{$t("Public.private")}}
       </span>
     </div>
     <el-empty v-if="talkList == null" description="暂无说说" />
@@ -26,10 +26,10 @@
               <i class="el-icon-more" style="color:#333;cursor: pointer;" />
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item :command="'1,' + item.id">
-                  <i class="el-icon-edit" />编辑
+                  <i class="el-icon-edit" />{{$t("Public.edit")}}
                 </el-dropdown-item>
                 <el-dropdown-item :command="'2,' + item.id">
-                  <i class="el-icon-delete" />删除
+                  <i class="el-icon-delete" />{{$t("Public.delete")}}
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -38,10 +38,10 @@
           <div class="time">
             {{ item.createTime | dateTime }}
             <span class="top" v-if="item.isTop == 1">
-              <i class="iconfont el-icon-myzhiding" /> 置顶
+              <i class="iconfont el-icon-myzhiding" /> {{$t("Public.top")}}
             </span>
             <span class="secret" v-if="item.status == 2">
-              <i class="iconfont el-icon-mymima" /> 私密
+              <i class="iconfont el-icon-mymima" /> {{$t("Public.private")}}
             </span>
           </div>
           <!-- 说说信息 -->
@@ -82,9 +82,9 @@
       </div>
       <div style="font-size:1rem">是否删除该说说？</div>
       <div slot="footer">
-        <el-button @click="isdelete = false">取 消</el-button>
+        <el-button @click="isdelete = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deleteTalk">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>

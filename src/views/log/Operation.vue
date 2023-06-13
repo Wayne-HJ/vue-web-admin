@@ -10,7 +10,7 @@
         :disabled="this.logIdList.length == 0"
         @click="isDelete = true"
       >
-        批量删除
+      {{$t("Public.delete")}}
       </el-button>
       <!-- 数据筛选 -->
       <div style="margin-left:auto">
@@ -29,7 +29,7 @@
           style="margin-left:1rem"
           @click="searchLogs"
         >
-          搜索
+        {{$t("Public.search")}}
         </el-button>
       </div>
     </div>
@@ -102,7 +102,7 @@
             slot="reference"
             @click="check(scope.row)"
           >
-            <i class="el-icon-view" /> 查看
+            <i class="el-icon-view" /> {{$t("Public.check")}}
           </el-button>
           <el-popconfirm
             title="确定删除吗？"
@@ -110,7 +110,7 @@
             @confirm="deleteLog(scope.row.id)"
           >
             <el-button size="mini" type="text" slot="reference">
-              <i class="el-icon-delete" /> 删除
+              <i class="el-icon-delete" /> {{$t("Public.delete")}}
             </el-button>
           </el-popconfirm>
         </template>
@@ -167,9 +167,9 @@
       </div>
       <div style="font-size:1rem">是否删除选中项？</div>
       <div slot="footer">
-        <el-button @click="isDelete = false">取 消</el-button>
+        <el-button @click="isDelete = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deleteLog(null)">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>

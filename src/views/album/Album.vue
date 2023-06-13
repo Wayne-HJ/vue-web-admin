@@ -36,7 +36,7 @@
           style="margin-left:1rem"
           @click="searchAlbums"
         >
-          搜索
+        {{$t("Public.search")}}
         </el-button>
       </div>
     </div>
@@ -52,10 +52,10 @@
               <i class="el-icon-more" style="color:#fff" />
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item :command="'update' + JSON.stringify(item)">
-                  <i class="el-icon-edit" />编辑
+                  <i class="el-icon-edit" />{{$t("Public.edit")}}
                 </el-dropdown-item>
                 <el-dropdown-item :command="'delete' + item.id">
-                  <i class="el-icon-delete" />删除
+                  <i class="el-icon-delete" />{{$t("Public.delete")}}
                 </el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
@@ -114,15 +114,15 @@
         </el-form-item>
         <el-form-item label="发布形式">
           <el-radio-group v-model="albumForum.status">
-            <el-radio :label="1">公开</el-radio>
-            <el-radio :label="2">私密</el-radio>
+            <el-radio :label="1">{{$t("Public.public")}}</el-radio>
+            <el-radio :label="2">{{$t("Public.private")}}</el-radio>
           </el-radio-group>
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button @click="addOrEdit = false">取 消</el-button>
+        <el-button @click="addOrEdit = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="addOrEditAlbum">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>
@@ -133,9 +133,9 @@
       </div>
       <div style="font-size:1rem">是否删除该相册？</div>
       <div slot="footer">
-        <el-button @click="isdelete = false">取 消</el-button>
+        <el-button @click="isdelete = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deleteAlbum">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>

@@ -49,7 +49,7 @@
           <el-switch
             style="margin-right:16px"
             v-model="talk.isTop"
-            inactive-text="置顶"
+            :inactive-text="$t('Public.top')"
             :active-value="1"
             :inactive-value="0"
           />
@@ -78,7 +78,7 @@
             @click="saveOrUpdateTalk"
             :disabled="talk.content == ''"
           >
-            发布
+          {{$t("Public.publish")}}
           </el-button>
         </div>
       </div>
@@ -133,8 +133,8 @@ export default {
         images: null
       },
       statusList: [
-        { status: 1, desc: "公开" },
-        { status: 2, desc: "私密" }
+        { status: 1, desc: this.$t("Public.public") },
+        { status: 2, desc: this.$t("Public.private") }
       ],
       uploadList: []
     };

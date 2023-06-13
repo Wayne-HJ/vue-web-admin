@@ -81,7 +81,7 @@
             style="margin-left:6.3rem"
             @click="updateWebsiteConfig"
           >
-            修改
+          {{$t("Public.edit")}}
           </el-button>
         </el-form>
       </el-tab-pane>
@@ -119,7 +119,7 @@
               style="margin-left:4.375rem"
               @click="updateWebsiteConfig"
             >
-              修改
+            {{$t("Public.edit")}}
             </el-button>
           </el-checkbox-group>
         </el-form>
@@ -185,26 +185,26 @@
           </el-form-item>
           <el-form-item label="邮箱通知">
             <el-radio-group v-model="websiteConfigForm.isEmailNotice">
-              <el-radio :label="0">关闭</el-radio>
-              <el-radio :label="1">开启</el-radio>
+              <el-radio :label="0">{{$t("Public.close")}}</el-radio>
+              <el-radio :label="1">{{$t("Public.open")}}</el-radio>
             </el-radio-group>
           </el-form-item>
           <el-form-item label="评论审核">
             <el-radio-group v-model="websiteConfigForm.isCommentReview">
-              <el-radio :label="0">关闭</el-radio>
-              <el-radio :label="1">开启</el-radio>
+              <el-radio :label="0">{{$t("Public.close")}}</el-radio>
+              <el-radio :label="1">{{$t("Public.open")}}</el-radio>
             </el-radio-group>
           </el-form-item>
           <el-form-item label="留言审核">
             <el-radio-group v-model="websiteConfigForm.isMessageReview">
-              <el-radio :label="0">关闭</el-radio>
-              <el-radio :label="1">开启</el-radio>
+              <el-radio :label="0">{{$t("Public.close")}}</el-radio>
+              <el-radio :label="1">{{$t("Public.open")}}</el-radio>
             </el-radio-group>
           </el-form-item>
           <el-form-item label="打赏状态">
             <el-radio-group v-model="websiteConfigForm.isReward">
-              <el-radio :label="0">关闭</el-radio>
-              <el-radio :label="1">开启</el-radio>
+              <el-radio :label="0">{{$t("Public.close")}}</el-radio>
+              <el-radio :label="1">{{$t("Public.open")}}</el-radio>
             </el-radio-group>
           </el-form-item>
           <el-row style="width:600px" v-show="websiteConfigForm.isReward == 1">
@@ -245,8 +245,8 @@
           </el-row>
           <el-form-item label="聊天室状态">
             <el-radio-group v-model="websiteConfigForm.isChatRoom">
-              <el-radio :label="0">关闭</el-radio>
-              <el-radio :label="1">开启</el-radio>
+              <el-radio :label="0">{{$t("Public.close")}}</el-radio>
+              <el-radio :label="1">{{$t("Public.open")}}</el-radio>
             </el-radio-group>
           </el-form-item>
           <el-form-item
@@ -261,8 +261,8 @@
           </el-form-item>
           <el-form-item label="音乐播放器状态">
             <el-radio-group v-model="websiteConfigForm.isMusicPlayer">
-              <el-radio :label="0">关闭</el-radio>
-              <el-radio :label="1">开启</el-radio>
+              <el-radio :label="0">{{$t("Public.close")}}</el-radio>
+              <el-radio :label="1">{{$t("Public.open")}}</el-radio>
             </el-radio-group>
           </el-form-item>
           <el-button
@@ -271,7 +271,7 @@
             style="margin-left:6.3rem"
             @click="updateWebsiteConfig"
           >
-            修改
+          {{$t("Public.edit")}}
           </el-button>
         </el-form>
       </el-tab-pane>

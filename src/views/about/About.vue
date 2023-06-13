@@ -13,7 +13,7 @@
       class="edit-btn"
       @click="updateAbout"
     >
-      修改
+    {{$t("Public.edit")}}
     </el-button>
   </el-card>
 </template>

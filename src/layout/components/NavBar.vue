@@ -60,7 +60,7 @@
         </span>
       </div>
       <div class="tabs-close-item" style="float:right" @click="closeAllTab">
-        CloseAll
+        {{$t("Public.closeAll")}}
       </div>
     </div>
   </div>
@@ -128,6 +128,8 @@ export default {
           //把语言保存在localStorage中
           localStorage.setItem("lang", 'en');
         }
+        //刷新
+        window.location.reload();
         
       }
     },

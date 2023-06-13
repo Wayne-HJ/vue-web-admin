@@ -2,7 +2,7 @@
   <el-card class="main-card">
     <div class="title">{{ this.$route.name }}</div>
     <div class="review-menu">
-      <span>状态</span>
+      <span>{{$t("Public.state")}}</span>
       <span
         @click="changeReview(null)"
         :class="isReview == null ? 'active-review' : 'review'"
@@ -31,7 +31,7 @@
         :disabled="messageIdList.length == 0"
         @click="deleteFlag = true"
       >
-        批量删除
+      {{$t("Public.delete")}}
       </el-button>
       <el-button
         type="success"
@@ -40,7 +40,7 @@
         :disabled="messageIdList.length == 0"
         @click="updateMessageReview(null)"
       >
-        批量通过
+      {{$t("Public.pass")}}
       </el-button>
       <!-- 数据筛选 -->
       <div style="margin-left:auto">
@@ -59,7 +59,7 @@
           style="margin-left:1rem"
           @click="searchMessages"
         >
-          搜索
+        {{$t("Public.search")}}
         </el-button>
       </div>
     </div>
@@ -124,7 +124,7 @@
             slot="reference"
             @click="updateMessageReview(scope.row.id)"
           >
-            通过
+          {{$t("Public.pass")}}
           </el-button>
           <el-popconfirm
             style="margin-left:10px"
@@ -132,7 +132,7 @@
             @confirm="deleteMessage(scope.row.id)"
           >
             <el-button size="mini" type="danger" slot="reference">
-              删除
+              {{$t("Public.delete")}}
             </el-button>
           </el-popconfirm>
         </template>
@@ -157,9 +157,9 @@
       </div>
       <div style="font-size:1rem">是否删除选中项？</div>
       <div slot="footer">
-        <el-button @click="deleteFlag = false">取 消</el-button>
+        <el-button @click="deleteFlag = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deleteMessage(null)">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>

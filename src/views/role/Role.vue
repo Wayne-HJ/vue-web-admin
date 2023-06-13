@@ -9,7 +9,7 @@
         icon="el-icon-plus"
         @click="openMenuModel(null)"
       >
-        新增
+      {{$t("Public.add")}}
       </el-button>
       <el-button
         type="danger"
@@ -18,7 +18,7 @@
         :disabled="this.roleIdList.length == 0"
         @click="isDelete = true"
       >
-        批量删除
+      {{$t("Public.delete")}}
       </el-button>
       <!-- 条件筛选 -->
       <div style="margin-left:auto">
@@ -37,7 +37,7 @@
           style="margin-left:1rem"
           @click="searchRoles"
         >
-          搜索
+        {{$t("Public.search")}}
         </el-button>
       </div>
     </div>
@@ -100,7 +100,7 @@
             @confirm="deleteRoles(scope.row.id)"
           >
             <el-button size="mini" type="text" slot="reference">
-              <i class="el-icon-delete" /> 删除
+              <i class="el-icon-delete" /> {{$t("Public.delete")}}
             </el-button>
           </el-popconfirm>
         </template>
@@ -140,9 +140,9 @@
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button @click="roleMenu = false">取 消</el-button>
+        <el-button @click="roleMenu = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="saveOrUpdateRoleMenu">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>
@@ -167,9 +167,9 @@
         </el-form-item>
       </el-form>
       <div slot="footer">
-        <el-button @click="roleResource = false">取 消</el-button>
+        <el-button @click="roleResource = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="saveOrUpdateRoleResource">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>
@@ -180,9 +180,9 @@
       </div>
       <div style="font-size:1rem">是否删除选中项？</div>
       <div slot="footer">
-        <el-button @click="isDelete = false">取 消</el-button>
+        <el-button @click="isDelete = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deleteRoles(null)">
-          确 定
+          {{$t("Public.confirm")}}
         </el-button>
       </div>
     </el-dialog>
