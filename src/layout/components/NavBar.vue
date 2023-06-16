@@ -15,23 +15,28 @@
       </el-breadcrumb>
       <!-- 右侧菜单 -->
       <div class="right-menu">
+        <!-- 翻译按钮 -->
+        <div class="screen-full" @click="translate">
+          <i class="iconfont2 icon-fanyi" />
+        </div>
         <!-- 全屏按钮 -->
         <div class="screen-full" @click="fullScreen">
           <i class="iconfont el-icon-myicwindowzoom48px" />
         </div>
+        
         <!-- 用户选项 -->
         <el-dropdown @command="handleCommand">
           <el-avatar :size="40" :src="this.$store.state.avatar" />
           <i class="el-icon-caret-bottom" />
           <el-dropdown-menu slot="dropdown">
+            <!-- <el-dropdown-item command="translate">
+                <i class="iconfont2 icon-fanyi" />{{$t("Home.translate")}}
+            </el-dropdown-item> -->
             <el-dropdown-item command="setting">
               <i class="el-icon-s-custom" />{{$t("Home.user")}}
             </el-dropdown-item>
             <el-dropdown-item command="logout" divided>
               <i class="iconfont el-icon-mytuichu" />{{$t("Home.logout")}}
-            </el-dropdown-item>
-            <el-dropdown-item command="translate" divided>
-                <i class="iconfont2 icon-fanyi" />{{$t("Home.translate")}}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -127,6 +132,19 @@ export default {
         window.location.reload();
         
       }
+    },
+    translate() {
+      if(this.$i18n.locale=='en'){
+          this.$i18n.locale = 'zh';
+          //把语言保存在localStorage中
+          localStorage.setItem("lang", 'zh');
+        }else{
+          this.$i18n.locale = 'en';
+          //把语言保存在localStorage中
+          localStorage.setItem("lang", 'en');
+        }
+        //刷新
+        window.location.reload();
     },
     closeAllTab() {
       this.$store.commit("resetTab");

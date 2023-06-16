@@ -16,6 +16,8 @@ export default {
       "private":"私密",
       "top":"置顶",
       "publish":"发布",
+      "success_hint":"登录成功",
+
     },
     Home: {
       "translate":"英语",

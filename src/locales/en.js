@@ -16,6 +16,7 @@ export default {
         "private":"Private",
         "top":"Top",
         "publish":"Publish",
+        "success_hint":"Login Success!",
       },
     Home: {
         "translate":"Chinese",

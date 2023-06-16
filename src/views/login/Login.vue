@@ -73,7 +73,7 @@ export default {
                     that.$store.commit("login", data.data);
                     // 加载用户菜单
                     generaMenu();
-                    that.$message.success("登录成功");
+                    that.$message.success(that.$t('Public.success_hint'));
                     that.$router.push({ path: "/" });
                   } else {
                     that.$message.error(data.message);
