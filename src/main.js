@@ -6,6 +6,7 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import "./assets/css/index.css";
 import "./assets/css/iconfont.css";
+import "./assets/icons/iconfont.css";
 import config from "./assets/js/config";
 import axios from "axios";
 import VueAxios from "vue-axios";
