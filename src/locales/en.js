@@ -1,5 +1,6 @@
 export default {
     Public:{
+        "home":"Home",
         "add":"Add",
         "edit":"Edit",
         "delete":"Delete",
@@ -16,6 +17,11 @@ export default {
         "private":"Private",
         "top":"Top",
         "publish":"Publish",
+        "login":"Login",
+        "username":"UserName",
+        "password":"PassWord",
+        "name_hint":"Username cannot be empty!",
+        "password_hint":"Password cannot be empty!",
         "success_hint":"Login Success!",
       },
     Home: {

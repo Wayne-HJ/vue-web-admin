@@ -73,8 +73,8 @@ export default {
     //替换面包屑导航
     let matched = this.$route.matched.filter(item => item.name);
     const first = matched[0];
-    if (first && first.name !== "Home") {
-      matched = [{ path: "/", name: "Home" }].concat(matched);
+    if (first && first.name !== this.$t("Public.home")) {
+      matched = [{ path: "/", name: this.$t("Public.home") }].concat(matched);
     }
     this.breadcrumbList = matched;
     //保存当前页标签
@@ -98,6 +98,7 @@ export default {
       //如果删除的是当前页则返回上一标签页
       if (tab.path == this.$route.path) {
         var tabList = this.$store.state.tabList;
+      console.log('tabList',tabList);
         this.$router.push({ path: tabList[tabList.length - 1].path });
       }
     },

@@ -1,5 +1,6 @@
 export default {
     Public:{
+      "home":"首页",
       "add":"添加",
       "edit":"编辑",
       "delete":"删除",
@@ -16,6 +17,11 @@ export default {
       "private":"私密",
       "top":"置顶",
       "publish":"发布",
+      "login":"登 录",
+      "username":"用户名",
+      "password":"密码",
+      "name_hint":"用户名不能为空！",
+      "password_hint":"密码不能为空！",
       "success_hint":"登录成功",
 
     },

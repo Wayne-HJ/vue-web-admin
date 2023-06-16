@@ -42,6 +42,12 @@ export default new Vuex.Store({
     },
     saveUserMenuList(state, userMenuList) {
       state.userMenuList = userMenuList;
+      
+      if(userMenuList[0].children[0].name=='首页'){
+        state.tabList[0]={ name: "首页", path: "/" }
+      }else{
+        state.tabList[0]={ name: "Home", path: "/" }
+      }
     },
     logout(state) {
       state.userId = null;

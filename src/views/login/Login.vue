@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <div class="login-card">
-      <div class="login-title">UserLogin</div>
+      <div class="login-title">{{$t("Public.login")}}</div>
       <!-- 登录表单 -->
       <el-form
         status-icon
@@ -15,7 +15,7 @@
           <el-input
             v-model="loginForm.username"
             prefix-icon="el-icon-user-solid"
-            placeholder="userName"
+            :placeholder="$t('Public.username')"
             @keyup.enter.native="login"
           />
         </el-form-item>
@@ -25,13 +25,13 @@
             v-model="loginForm.password"
             prefix-icon="iconfont el-icon-mymima"
             show-password
-            placeholder="passWord"
+            :placeholder="$t('Public.password')"
             @keyup.enter.native="login"
           />
         </el-form-item>
       </el-form>
       <!-- 登录按钮 -->
-      <el-button type="primary" @click="login">Login</el-button>
+      <el-button type="primary" @click="login">{{$t("Public.login")}}</el-button>
     </div>
   </div>
 </template>
@@ -47,9 +47,9 @@ export default {
       },
       rules: {
         username: [
-          { required: true, message: "用户名不能为空", trigger: "blur" }
+          { required: true, message: this.$t('Public.name_hint'), trigger: "blur" }
         ],
-        password: [{ required: true, message: "密码不能为空", trigger: "blur" }]
+        password: [{ required: true, message: this.$t('Public.password_hint'), trigger: "blur" }]
       }
     };
   },
@@ -72,7 +72,7 @@ export default {
                     // 登录后保存用户信息
                     that.$store.commit("login", data.data);
                     // 加载用户菜单
-                    generaMenu();
+                    generaMenu(that.$i18n.locale);
                     that.$message.success(that.$t('Public.success_hint'));
                     that.$router.push({ path: "/" });
                   } else {
