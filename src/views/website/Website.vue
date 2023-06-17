@@ -113,6 +113,22 @@
               />
               <el-checkbox label="gitee">是否展示</el-checkbox>
             </el-form-item>
+            <el-form-item label="Linkedin">
+              <el-input
+                v-model="websiteConfigForm.linkedin"
+                size="small"
+                style="width:400px;margin-right:1rem"
+              />
+              <el-checkbox label="linkedin">是否展示</el-checkbox>
+            </el-form-item>
+            <el-form-item label="Twitter">
+              <el-input
+                v-model="websiteConfigForm.twitter"
+                size="small"
+                style="width:400px;margin-right:1rem"
+              />
+              <el-checkbox label="twitter">是否展示</el-checkbox>
+            </el-form-item>
             <el-button
               type="primary"
               size="medium"
@@ -300,6 +316,8 @@ export default {
         qq: "",
         github: "",
         gitee: "",
+        linkedin: "",
+        twitter: "",
         userAvatar: "",
         touristAvatar: "",
         isReward: 1,
