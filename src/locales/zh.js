@@ -5,6 +5,7 @@ export default {
       "edit":"编辑",
       "delete":"删除",
       "cancel":"取消",
+      "update":"更新",
       "confirm":"确认",
       "search":"搜索",
       "pass":"通过",

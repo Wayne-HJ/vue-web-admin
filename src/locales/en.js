@@ -5,6 +5,7 @@ export default {
         "edit":"Edit",
         "delete":"Delete",
         "cancel":"Cancel",
+        "update":"Update",
         "confirm":"Confirm",
         "search":"Search",
         "pass":"Pass",

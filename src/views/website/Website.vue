@@ -81,7 +81,7 @@
             style="margin-left:6.3rem"
             @click="updateWebsiteConfig"
           >
-          {{$t("Public.edit")}}
+          {{$t("Public.update")}}
           </el-button>
         </el-form>
       </el-tab-pane>
@@ -135,7 +135,7 @@
               style="margin-left:4.375rem"
               @click="updateWebsiteConfig"
             >
-            {{$t("Public.edit")}}
+            {{$t("Public.update")}}
             </el-button>
           </el-checkbox-group>
         </el-form>
@@ -287,7 +287,7 @@
             style="margin-left:6.3rem"
             @click="updateWebsiteConfig"
           >
-          {{$t("Public.edit")}}
+          {{$t("Public.update")}}
           </el-button>
         </el-form>
       </el-tab-pane>
