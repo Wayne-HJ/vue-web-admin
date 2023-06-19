@@ -1,4 +1,4 @@
-# Web Management Platform front-end
+# Web Admin front-end
 
 ## Project Screenshots
 
