@@ -22,7 +22,7 @@
   </a>
   <h3 align="center">Springboot + Vue Separation of Front-end and Back-end Personal Website + Management Backend</h3>
   <p align="center">
-    This project is the frontend of the Vue personal website
+    This project is the frontend of the web admin
     <br />
     <!-- <a href="https://github.com/Wayne-HJ/personal-website"><strong>Explore the docs »</strong></a> -->
     <!-- <br /> -->
