@@ -27,7 +27,7 @@
     <!-- <a href="https://github.com/Wayne-HJ/personal-website"><strong>Explore the docs »</strong></a> -->
     <!-- <br /> -->
     <br />
-    <a href="https://blog.jianght.eu.org">View Demo</a>
+    <a href="https://manage.jianght.eu.org">View Demo</a>
     ·
     <a href="https://github.com/Wayne-HJ/personal-website/issues">Report Bug</a>
     <!-- ·
