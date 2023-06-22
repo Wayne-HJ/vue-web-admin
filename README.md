@@ -17,21 +17,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Wayne-HJ/personal-website">
+  <a href="https://github.com/Wayne-HJ/vue-web-admin">
     <img src="public/logo.png" alt="Logo" width="80" height="80">
   </a>
-  <h3 align="center">Springboot + Vue Separation of Front-end and Back-end Personal Website + Management Backend</h3>
+  <h3 align="center">Vue Web Admin</h3>
   <p align="center">
     This project is the frontend of the web admin
     <br />
-    <!-- <a href="https://github.com/Wayne-HJ/personal-website"><strong>Explore the docs »</strong></a> -->
+    <!-- <a href="https://github.com/Wayne-HJ/vue-web-admin"><strong>Explore the docs »</strong></a> -->
     <!-- <br /> -->
     <br />
     <a href="https://manage.jianght.eu.org">View Demo</a>
     ·
-    <a href="https://github.com/Wayne-HJ/personal-website/issues">Report Bug</a>
+    <a href="https://github.com/Wayne-HJ/vue-web-admin/issues">Report Bug</a>
     <!-- ·
-    <a href="https://github.com/Wayne-HJ/personal-website/issues">Request Feature</a> -->
+    <a href="https://github.com/Wayne-HJ/vue-web-admin/issues">Request Feature</a> -->
   </p>
 </div>
 

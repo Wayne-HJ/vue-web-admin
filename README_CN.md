@@ -20,9 +20,9 @@
   <a href="https://github.com/Wayne-HJ/vue-web-admin">
     <img src="public/logo.png" alt="Logo" width="80" height="80">
   </a>
-  <h3 align="center">Springboot + Vue 前后端分离个人网站+管理后台</h3>
+  <h3 align="center">Vue 管理后台</h3>
   <p align="center">
-    本项目为vue管理后台前端
+    本项目为管理后台的vue前端
     <br />
     <!-- <a href="https://github.com/Wayne-HJ/vue-web-admin"><strong>Explore the docs »</strong></a> -->
     <!-- <br /> -->
