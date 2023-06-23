@@ -26,7 +26,7 @@
         
         <!-- 用户选项 -->
         <el-dropdown @command="handleCommand">
-          <el-avatar :size="40" :src="this.$store.state.avatar" />
+          <el-avatar class="avatar" :size="40" :src="this.$store.state.avatar" />
           <i class="el-icon-caret-bottom" />
           <el-dropdown-menu slot="dropdown">
             <!-- <el-dropdown-item command="translate">
@@ -236,6 +236,7 @@ export default {
   font-size: 12px;
   margin-top: 4px;
   margin-left: 5px;
+  border-radius: 3px;
 }
 .tabs-close-item {
   position: absolute;
@@ -251,6 +252,7 @@ export default {
   font-size: 12px;
   margin-top: 4px;
   margin-left: 5px;
+  border-radius: 3px;
 }
 .tabs-view-item-active {
   display: inline-block;
@@ -264,6 +266,7 @@ export default {
   background-color: #42b983;
   color: #fff;
   border-color: #42b983;
+  border-radius: 3px;
 }
 .tabs-view-item-active:before {
   content: "";
@@ -274,10 +277,11 @@ export default {
   border-radius: 50%;
   position: relative;
   margin-right: 2px;
+  border-radius: 3px;
 }
-/deep/.el-avatar img{
+::v-deep.el-avatar>img {
   width: 100% !important;
-  height: auto;
+  height: auto !important;
 }
 .el-icon-close {
   padding: 0.1rem;
