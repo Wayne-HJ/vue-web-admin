@@ -120,8 +120,29 @@ export default {
         "hintdelete3":"确定彻底删除吗？",
         "importSuccess":"导入成功",
         "topSuccess":"置顶成功",
-
-    
+    },
+    CatAndTag:{
+      "name":"名称",
+      "catName":"分类名",
+      "tagName":"标签名",
+      "articles":"文章量",
+      "createTime":"创建时间",
+      "operate":"操作",
+      "hint":"提示",
+      "addCat":"添加分类",
+      "editCat":"修改分类",
+      "addTag":"添加标签",
+      "editTag":"修改标签",
+      "hintCat":"请输入分类名",
+      "hintTag":"请输入标签名",
+      "hintDelete":"确定删除吗？",
+      "hintCatErro":"分类名不能为空",
+      "hintTagErro":"标签名不能为空"
+    },
+    ComAndMes:{
+      "all":"全部",
+      "normal":"正常",
+      "check":"审核中"
     }
 
     

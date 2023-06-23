@@ -7,19 +7,19 @@
         @click="changeReview(null)"
         :class="isReview == null ? 'active-review' : 'review'"
       >
-        全部
+        {{$t('ComAndMes.all')}}
       </span>
       <span
         @click="changeReview(1)"
         :class="isReview == 1 ? 'active-review' : 'review'"
       >
-        正常
+      {{$t('ComAndMes.normal')}}
       </span>
       <span
         @click="changeReview(0)"
         :class="isReview == 0 ? 'active-review' : 'review'"
       >
-        审核中
+      {{$t('ComAndMes.check')}}
       </span>
     </div>
     <!-- 表格操作 -->
@@ -142,8 +142,8 @@
       <!-- 状态 -->
       <el-table-column prop="isReview" label="状态" width="80" align="center">
         <template slot-scope="scope">
-          <el-tag v-if="scope.row.isReview == 0" type="warning">审核中</el-tag>
-          <el-tag v-if="scope.row.isReview == 1" type="success">正常</el-tag>
+          <el-tag v-if="scope.row.isReview == 0" type="warning">{{$t('ComAndMes.check')}}</el-tag>
+          <el-tag v-if="scope.row.isReview == 1" type="success">{{$t('ComAndMes.normal')}}</el-tag>
         </template>
       </el-table-column>
       <!-- 来源 -->
@@ -155,7 +155,7 @@
         </template>
       </el-table-column>
       <!-- 列操作 -->
-      <el-table-column label="操作" width="160" align="center">
+      <el-table-column label="操作"  align="center">
         <template slot-scope="scope">
           <el-button
             v-if="scope.row.isReview == 0"

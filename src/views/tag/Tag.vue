@@ -25,7 +25,7 @@
           v-model="keywords"
           prefix-icon="el-icon-search"
           size="small"
-          placeholder="请输入标签名"
+          :placeholder="$t('CatAndTag.hintTag')"
           style="width:200px"
           @keyup.enter.native="searchTags"
         />
@@ -50,7 +50,7 @@
       <!-- 表格列 -->
       <el-table-column type="selection" width="55" />
       <!-- 标签名 -->
-      <el-table-column prop="tagName" label="标签名" align="center">
+      <el-table-column prop="tagName" :label="$t('CatAndTag.tagName')" align="center">
         <template slot-scope="scope">
           <el-tag>
             {{ scope.row.tagName }}
@@ -58,22 +58,22 @@
         </template>
       </el-table-column>
       <!-- 文章量 -->
-      <el-table-column prop="articleCount" label="文章量" align="center" />
+      <el-table-column prop="articleCount" :label="$t('CatAndTag.articles')" align="center" />
       <!-- 标签创建时间 -->
-      <el-table-column prop="createTime" label="创建时间" align="center">
+      <el-table-column prop="createTime" :label="$t('CatAndTag.createTime')" align="center">
         <template slot-scope="scope">
           <i class="el-icon-time" style="margin-right:5px" />
           {{ scope.row.createTime | date }}
         </template>
       </el-table-column>
       <!-- 列操作 -->
-      <el-table-column label="操作" align="center" width="160">
+      <el-table-column :label="$t('CatAndTag.operate')" align="center" width="160">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="openModel(scope.row)">
             {{$t("Public.edit")}}
           </el-button>
           <el-popconfirm
-            title="确定删除吗？"
+            :title="$t('CatAndTag.hintDelete')"
             style="margin-left:1rem"
             @confirm="deleteTag(scope.row.id)"
           >
@@ -99,9 +99,9 @@
     <!-- 批量删除对话框 -->
     <el-dialog :visible.sync="isDelete" width="30%">
       <div class="dialog-title-container" slot="title">
-        <i class="el-icon-warning" style="color:#ff9900" />提示
+        <i class="el-icon-warning" style="color:#ff9900" />{{$t('CatAndTag.hint')}}
       </div>
-      <div style="font-size:1rem">是否删除选中项？</div>
+      <div style="font-size:1rem">{{$t('CatAndTag.hintDelete')}}</div>
       <div slot="footer">
         <el-button @click="isDelete = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deleteTag(null)">
@@ -113,7 +113,7 @@
     <el-dialog :visible.sync="addOrEdit" width="30%">
       <div class="dialog-title-container" slot="title" ref="tagTitle" />
       <el-form label-width="80px" size="medium" :model="tagForm">
-        <el-form-item label="标签名">
+        <el-form-item :label="$t('CatAndTag.name')">
           <el-input style="width:220px" v-model="tagForm.tagName" />
         </el-form-item>
       </el-form>
@@ -209,17 +209,17 @@ export default {
     openModel(tag) {
       if (tag != null) {
         this.tagForm = JSON.parse(JSON.stringify(tag));
-        this.$refs.tagTitle.innerHTML = "修改标签";
+        this.$refs.tagTitle.innerHTML = this.$t('CatAndTag.editTag');
       } else {
         this.tagForm.id = null;
         this.tagForm.tagName = "";
-        this.$refs.tagTitle.innerHTML = "添加标签";
+        this.$refs.tagTitle.innerHTML = this.$t('CatAndTag.addTag');
       }
       this.addOrEdit = true;
     },
     addOrEditTag() {
       if (this.tagForm.tagName.trim() == "") {
-        this.$message.error("标签名不能为空");
+        this.$message.error(this.$t('CatAndTag.hintTagErro'));
         return false;
       }
       this.axios.post("/api/admin/tags", this.tagForm).then(({ data }) => {

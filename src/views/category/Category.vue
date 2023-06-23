@@ -25,7 +25,7 @@
           v-model="keywords"
           prefix-icon="el-icon-search"
           size="small"
-          placeholder="请输入分类名"
+          :placeholder="$t('CatAndTag.hintCat')"
           style="width:200px"
           @keyup.enter.native="searchCategories"
         />
@@ -50,24 +50,24 @@
       <!-- 表格列 -->
       <el-table-column type="selection" width="55" />
       <!-- 分类名 -->
-      <el-table-column prop="categoryName" label="分类名" align="center" />
+      <el-table-column prop="categoryName" :label="$t('CatAndTag.catName')" align="center" />
       <!-- 文章量 -->
-      <el-table-column prop="articleCount" label="文章量" align="center" />
+      <el-table-column prop="articleCount" :label="$t('CatAndTag.articles')" align="center" />
       <!-- 分类创建时间 -->
-      <el-table-column prop="createTime" label="创建时间" align="center">
+      <el-table-column prop="createTime" :label="$t('CatAndTag.createTime')" align="center">
         <template slot-scope="scope">
           <i class="el-icon-time" style="margin-right:5px" />
           {{ scope.row.createTime | date }}
         </template>
       </el-table-column>
       <!-- 列操作 -->
-      <el-table-column label="操作" width="160" align="center">
+      <el-table-column :label="操作" width="160" align="center">
         <template slot-scope="scope">
           <el-button type="primary" size="mini" @click="openModel(scope.row)">
             {{$t("Public.edit")}}
           </el-button>
           <el-popconfirm
-            title="确定删除吗？"
+            :title="$t('CatAndTag.hintDelete')"
             style="margin-left:1rem"
             @confirm="deleteCategory(scope.row.id)"
           >
@@ -93,9 +93,9 @@
     <!-- 批量删除对话框 -->
     <el-dialog :visible.sync="isDelete" width="30%">
       <div class="dialog-title-container" slot="title">
-        <i class="el-icon-warning" style="color:#ff9900" />提示
+        <i class="el-icon-warning" style="color:#ff9900" />{{$t("CatAndTag.hint")}}
       </div>
-      <div style="font-size:1rem">是否删除选中项？</div>
+      <div style="font-size:1rem">{{$t("CatAndTag.hintDelete")}}</div>
       <div slot="footer">
         <el-button @click="isDelete = false">{{$t("Public.cancel")}}</el-button>
         <el-button type="primary" @click="deleteCategory(null)">
@@ -107,7 +107,7 @@
     <el-dialog :visible.sync="addOrEdit" width="30%">
       <div class="dialog-title-container" slot="title" ref="categoryTitle" />
       <el-form label-width="80px" size="medium" :model="categoryForm">
-        <el-form-item label="分类名">
+        <el-form-item :label="$t('CatAndTag.name')">
           <el-input v-model="categoryForm.categoryName" style="width:220px" />
         </el-form-item>
       </el-form>
@@ -203,17 +203,17 @@ export default {
     openModel(category) {
       if (category != null) {
         this.categoryForm = JSON.parse(JSON.stringify(category));
-        this.$refs.categoryTitle.innerHTML = "修改分类";
+        this.$refs.categoryTitle.innerHTML = this.$t("CatAndTag.editCat");
       } else {
         this.categoryForm.id = null;
         this.categoryForm.categoryName = "";
-        this.$refs.categoryTitle.innerHTML = "添加分类";
+        this.$refs.categoryTitle.innerHTML = this.$t("CatAndTag.addCat");
       }
       this.addOrEdit = true;
     },
     addOrEditCategory() {
       if (this.categoryForm.categoryName.trim() == "") {
-        this.$message.error("分类名不能为空");
+        this.$message.error(this.$t("CatAndTag.hintCatErro"));
         return false;
       }
       this.axios

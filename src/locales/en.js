@@ -119,6 +119,30 @@ export default {
         "hintdelete3": "Are you sure you want to permanently delete?",
         "importSuccess": "Import successful",
         "topSuccess": "Top successful"
-    }
+    },
+    CatAndTag:{
+        "name":"Name",
+        "catName":"CategoryName",
+        "tagName":"TagName",
+        "articles":"Articles",
+        "createTime":"CreatTime",
+        "operate":"Operate",
+        "addCat":"Add category",
+        "editCat":"Edit category",
+        "addTag":"Add Tag",
+        "editTag":"Edit Tag",
+        "hint":"Hint",
+        "hintCat":"Input class name",
+        "hintTag":"Input Tag name",
+        "hintDelete":"confirm to delete?",
+        "hintCatErro":"Category Name can't be null",
+        "hintTagErro":"Tag Name can't be null"
+      },
+      ComAndMes:{
+        "all":"All",
+        "normal":"Normal",
+        "check":"Reviewing"
+      }
+  
     
   }
