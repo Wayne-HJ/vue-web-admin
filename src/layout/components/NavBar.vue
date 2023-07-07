@@ -279,9 +279,12 @@ export default {
   margin-right: 2px;
   border-radius: 3px;
 }
-::v-deep.el-avatar>img {
+::v-deep(.el-dropdown){
+  display: flex;
+}
+::v-deep(.el-avatar img ){
   width: 100% !important;
-  height: auto !important;
+  height: auto;
 }
 .el-icon-close {
   padding: 0.1rem;
@@ -297,7 +300,8 @@ export default {
   align-items: center;
 }
 .el-icon-caret-bottom {
-  margin-left: 0.5rem;
+  margin-top: 30px;
+  /*margin-left: 0.5rem;*/
   font-size: 0.75rem;
 }
 .screen-full {
